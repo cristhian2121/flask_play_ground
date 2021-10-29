@@ -1,8 +1,14 @@
 from flask import Flask
 import os
 from flask_sqlalchemy import SQLAlchemy
+import logging
+from logging.handlers import RotatingFileHandler
 from flask_login import LoginManager
 from flask_migrate import Migrate
+from flask_mail import Mail
+from flask_bootstrap import Bootstrap
+from flask_babel import Babel
+from flask import request
 # Configs
 from config import Config
 
@@ -14,6 +20,12 @@ migrate = Migrate(app, db)
 # Login
 login = LoginManager(app)
 login.login_view = 'login' # Redirect to login by defauld
+# Email
+mail = Mail(app)
+# Facelift (styles)
+bootstrap = Bootstrap(app)
+# Babel
+babel = Babel(app)
 
 # Logs
 if not app.debug:
@@ -28,6 +40,12 @@ if not app.debug:
 
     app.logger.setLevel(logging.INFO)
     app.logger.info('Microblog startup')
+
+@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+    # return 'es' -> default Spanish
+
 
 # Get router module
 from app import routes, models, errors

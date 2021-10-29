@@ -1,0 +1,83 @@
+2021-10-28 09:46:54,020 INFO: Microblog startup [in C:\Users\usuario\Documents\Projects\playGround\flask_microblog\app\__init__.py:32]
+2021-10-28 09:47:00,236 INFO: Microblog startup [in C:\Users\usuario\Documents\Projects\playGround\flask_microblog\app\__init__.py:32]
+2021-10-28 09:47:55,711 INFO: Microblog startup [in C:\Users\usuario\Documents\Projects\playGround\flask_microblog\app\__init__.py:32]
+2021-10-28 09:48:12,664 INFO: Microblog startup [in C:\Users\usuario\Documents\Projects\playGround\flask_microblog\app\__init__.py:32]
+2021-10-28 09:59:18,511 INFO: Microblog startup [in C:\Users\usuario\Documents\Projects\playGround\flask_microblog\app\__init__.py:32]
+2021-10-28 09:59:20,511 ERROR: Exception on /userProfile/cristhian [GET] [in c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1799, in _execute_context
+    self.dialect.do_execute(
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\sqlalchemy\engine\default.py", line 717, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: followers
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\usuario\Documents\Projects\playGround\flask_microblog\app\routes.py", line 73, in userProfile
+    return render_template('user.html', user=user, posts=posts, form=form)
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\flask\templating.py", line 137, in render_template
+    return _render(
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\usuario\Documents\Projects\playGround\flask_microblog\app\templates\user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\usuario\Documents\Projects\playGround\flask_microblog\app\templates\base.html", line 30, in top-level template code
+    {% block content %}{% endblock %}
+  File "C:\Users\usuario\Documents\Projects\playGround\flask_microblog\app\templates\user.html", line 11, in block "content"
+    <p>{{ user.followers.count() }} followers, {{ user.followed.count() }} following.</p>
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\sqlalchemy\orm\dynamic.py", line 373, in count
+    return self._generate(sess).count()
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\sqlalchemy\orm\query.py", line 3090, in count
+    return self._from_self(col).enable_eagerloads(False).scalar()
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\sqlalchemy\orm\query.py", line 2831, in scalar
+    ret = self.one()
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\sqlalchemy\orm\query.py", line 2808, in one
+    return self._iter().one()
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\sqlalchemy\orm\query.py", line 2846, in _iter
+    result = self.session.execute(
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1689, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1611, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 325, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1478, in _execute_clauseelement
+    ret = self._execute_context(
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    self._handle_dbapi_exception(
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 2023, in _handle_dbapi_exception
+    util.raise_(
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1799, in _execute_context
+    self.dialect.do_execute(
+  File "c:\users\usuario\documents\projects\playground\flask_microblog\venv\lib\site-packages\sqlalchemy\engine\default.py", line 717, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: followers
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.about_me AS user_about_me, user.last_seen AS user_last_seen 
+FROM user, followers 
+WHERE followers.followed_id = ? AND followers.follower_id = user.id) AS anon_1]
+[parameters: (1,)]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
