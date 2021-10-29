@@ -27,6 +27,10 @@ bootstrap = Bootstrap(app)
 # Babel
 babel = Babel(app)
 
+# Blueprints import above to avoid circular dependency
+from app.errors import bp as errors_bp
+app.register_blueprint(errors_bp)
+
 # Logs
 if not app.debug:
     if not os.path.exists('logs'):
@@ -48,4 +52,4 @@ def get_locale():
 
 
 # Get router module
-from app import routes, models, errors
+from app import routes, models
